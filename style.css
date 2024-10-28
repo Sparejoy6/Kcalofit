@@ -1,0 +1,97 @@
+/* styles.css */
+body {
+    
+    background-color: #333;
+    color: white;
+}
+
+.container {
+  font-family: "Oswald", sans-serif;
+  font-optical-sizing: auto;
+  font-weight:100;
+  font-style:normal;
+}
+
+.container {
+    max-width: 800px;
+    margin: auto;
+    padding: 20px;
+}
+
+.out{
+    color: white;
+}
+
+header {
+    color: white;
+    display: flex; /* Use flexbox for layout */
+    align-items: center; /* Vertically center items */
+    justify-content: center; /* Center the items */
+    background-color: #555;
+    padding: 20px;
+    border: 12.5px solid #7ed957; /* Border for the header */
+    border-radius: 50px; /* Optional: rounded corners */
+    margin-bottom: 20px; /* Space between header and form */
+    position: relative; /* Positioning context for absolute elements */
+}
+
+.logo {
+    position: absolute; /* Position logo absolutely */
+    left: 9.5px; /* Adjust as needed */
+    width: 60px; /* Adjust logo size */
+    height: auto; /* Maintain aspect ratio */
+    border: #555;
+    border-radius: 45px;
+}
+
+h1 {
+    margin: 0; /* Remove default margin */
+    text-align: center; /* Center the text */
+    flex-grow: 1; /* Allow the title to grow and take available space */
+}
+
+
+h1 {
+    margin: 0;
+}
+
+form {
+    color: #555;
+    margin: 20px 0;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    align-content: center;
+}
+
+label {
+    display: block;
+    margin: 10px 0 5px;
+}
+
+input {
+    width: 97.3%;
+    padding: 10px;
+    margin-bottom: 10px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+button {
+    background-color: #7ed957;
+    color: #555;
+    padding: 10px 20px; /* Add padding for better appearance */
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    margin-top: 10px; /* Space above the button */
+}
+
+button:hover {
+    background-color: #45a049;
+}
+
+#results {
+    margin-top: 20px;
+}

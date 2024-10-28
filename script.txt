@@ -1,0 +1,61 @@
+// script.js
+const foods = [
+    { name: "Idli", calories: 39, price: 10 },
+    { name: "Dosa", calories: 120, price: 30 },
+    { name: "Sambar", calories: 80, price: 20 },
+    { name: "Rice", calories: 130, price: 25 },
+    { name: "Vegetable Curry", calories: 100, price: 35 },
+    { name: "Egg", calories: 68, price: 6 },
+    { name: "Milk", calories: 42, price: 25 },
+    { name: "Curd", calories: 60, price: 20 },
+    { name: "Paneer", calories: 296, price: 200 },
+    { name: "Vada", calories: 90, price: 20 },
+];
+
+document.getElementById('calorie-form').addEventListener('submit', function(event) {
+    event.preventDefault();
+    const calorieInput = parseInt(document.getElementById('calories').value);
+    const budgetInput = parseInt(document.getElementById('budget').value);
+    const results = findFoods(calorieInput, budgetInput);
+    displayResults(results);
+});
+
+function findFoods(calories, budget) {
+    const result = [];
+    for (const food of foods) {
+        if (food.calories === calories && food.price <= budget) {
+            result.push(food);
+        }
+    }
+    return result.length > 0 ? result : findCombination(calories, budget);
+}
+
+function findCombination(calories, budget) {
+    const combinations = [];
+    for (let i = 0; i < foods.length; i++) {
+        for (let j = i + 1; j < foods.length; j++) {
+            const totalCalories = foods[i].calories + foods[j].calories;
+            const totalPrice = foods[i].price + foods[j].price;
+            if (totalCalories === calories && totalPrice <= budget) {
+                combinations.push([foods[i], foods[j]]);
+            }
+        }
+    }
+    return combinations;
+}
+
+function displayResults(results) {
+    const resultsDiv = document.getElementById('results');
+    resultsDiv.innerHTML = '';
+    if (results.length === 0) {
+        resultsDiv.innerHTML = '<p>No foods found within budget and calorie limit.</p>';
+    } else {
+        results.forEach(result => {
+            if (Array.isArray(result)) {
+                resultsDiv.innerHTML += `<p>Combination: ${result.map(item => item.name).join(' + ')}</p>`;
+            } else {
+                resultsDiv.innerHTML += `<p>${result.name} - ${result.calories} Calories, ₹${result.price}</p>`;
+            }
+        });
+    }
+}
